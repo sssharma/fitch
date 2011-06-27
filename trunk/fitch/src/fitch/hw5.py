@@ -39,6 +39,39 @@ if __name__ == '__main__':
         print line[:-2]
 
     print 'b)'
+
+    tr = genetic_tree()
+
+    v1 = specie(name = 'v1')
+    v2 = specie(name = 'v2')
+    v3 = specie(name = 'v3')
+    v4 = specie('GA', name = 'v4')
+    print v4.name+':', v4.r
+    v5 = specie('AC', name = 'v5')
+    print v5.name+':', v5.r
+    v6 = specie('AG', name = 'v6')
+    print v6.name+':', v6.r
+    v7 = specie('CA', name = 'v7')
+    print v7.name+':', v7.r
+
+    tr.root = v1
+
+    tr.add_edge(v1, v2)
+    tr.add_edge(v1, v3)
+
+    tr.add_edge(v2, v4)
+    tr.add_edge(v2, v5)
+
+    tr.add_edge(v3, v6)
+    tr.add_edge(v3, v7)
+
+    fitch = fitch_tree(tr)
+    
+    for tree in fitch.possible_trees:
+        print tree
+    
+    
+    print 'c)'
     
     tr = genetic_tree()
 
@@ -69,12 +102,21 @@ if __name__ == '__main__':
     
     non_fitch = {'v1':'CA', 'v2':'CA', 'v3':'CA', 'v4':'AA', 'v5':'GA', 'v6': 'CA', 'v7':'TA', }
     
-    print 'fitch.score', fitch.score
-    print 'fitch.get_score()', fitch.get_score()
     for list in fitch.possible_trees:
         line = ''
+        #print line
         
         for name, letter in  list.items():
             line += name+': '+letter+', '
         print line[:-2]
+    
+    print 'these are all fitch assignment'
+    print 'and their most parsimony score is', fitch.score
+    print 'another assignment is:'
+    line = ''
+    for name, letter in  non_fitch.items():
+            line += name+': '+letter+', '
+    print line[:-2]
+    
+    print 'c)'
 
