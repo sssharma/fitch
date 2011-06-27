@@ -25,7 +25,15 @@ class fitch_tree(tree):
 			self.R(index_tree)
 			self.possible_r_trees.append(set([index_tree]))
 			self.r(index_tree.get_root(),index_tree, self.possible_r_trees[i])
-
+		
+	def get_possible_trees(self, list_of_sets_of_trees):
+		
+		if not list_of_sets_of_trees: return 
+		
+		for tree in list_of_sets_of_trees[0]:
+			
+			self.possible_trees = self.possible_trees.union( self.get_possible_trees(list_of_sets_of_trees[1:]))
+	
 	def R(self, tr):
 		
 		def helper(node):
@@ -141,11 +149,12 @@ if __name__ == '__main__':
 	tr2.add_edge(v3, v7)
 
 	fitch = fitch_tree(tr)
-	print 'made the fitch tree'
+	
 	fitch.R(tr2)
-	print '	fitch.R(tr2)'
+	
 	s = set([tr2])
 	fitch.r(tr2.get_root(), tr2, s)
+	'''
 	for tree in s:
 		print tree
 
@@ -156,3 +165,23 @@ if __name__ == '__main__':
 			for tree in trees:	
 				print tree
 
+	'''
+	
+	list_of_options = [{'v1':''},{'v2':''},{'v3':''},{'v4':''},{'v5':''},{'v6':''},{'v7':''}]
+	
+	for i in range(2):
+		
+		for tree in fitch.possible_r_trees[i]:
+			
+			new_list = []
+			
+			for place in list_of_options:
+				new_list += place + ''
+				
+				
+				
+				
+				
+				
+				
+				
