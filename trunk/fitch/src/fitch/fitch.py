@@ -167,17 +167,24 @@ if __name__ == '__main__':
 
 	'''
 	
-	list_of_options = [{'v1':''},{'v2':''},{'v3':''},{'v4':''},{'v5':''},{'v6':''},{'v7':''}]
+	list_of_options = [{'v1':'','v2':'','v3':'','v4':'','v5':'','v6':'','v7':''}]
 	
 	for i in range(2):
 		
-		for tree in fitch.possible_r_trees[i]:
+		new_list = []
+		for place in list_of_options:
 			
-			new_list = []
+			for itree in fitch.possible_r_trees[i]:
 			
-			for place in list_of_options:
-				new_list += place + ''
-				
+				new_dic = dict(place)
+				for node in itree.nodes:
+					new_dic[node.name] += node.r
+				new_list.append(new_dic)
+				 
+		list_of_options = new_list
+			
+	for list in list_of_options:
+		print list
 				
 				
 				
