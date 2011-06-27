@@ -55,6 +55,14 @@ class fitch_tree(tree):
 					 
 			self.possible_trees = new_list
 	
+	def get_score(self):
+		score = 0
+		for itree in self.possible_r_trees:
+			for tree in itree:
+				score += tree.score
+				break
+		return score
+	
 	def R(self, tr):
 		
 		def helper(node):
@@ -75,6 +83,7 @@ class fitch_tree(tree):
 					node.R = inter
 				else:
 					self.score += 1
+					tr.score += 1
 					node.R = union
 				return node.R
 			
