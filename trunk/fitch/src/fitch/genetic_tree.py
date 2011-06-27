@@ -64,8 +64,11 @@ class genetic_tree(tree):
 		return id(self)
 	
 	def __repr__(self):
-		return str(dict((node.name, node.r ) for node in self.nodes))
-		
+		#return str(dict((node.name, node.r ) for node in self.nodes))
+		string = ''
+		for node in self.nodes:
+			string += node.name + ': ' + node.r + ', ' 
+		return string[:-2]
 	def __str__(self):
 		return str(self.__repr__())
 
