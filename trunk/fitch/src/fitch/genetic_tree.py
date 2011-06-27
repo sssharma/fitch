@@ -16,6 +16,7 @@ class specie(node):
 			self.R.add(r)
 		else:
 			self.r = None
+		
 	
 	def copy(self):
 		s = specie(self.r, self.name)
@@ -24,10 +25,15 @@ class specie(node):
 
 class genetic_tree(tree):
 	
+	
+	def __init__(self):
+		tree.__init__(self)
+		self.score = 0
+		
 	def copy(self):
 		
 		t = genetic_tree()
-		
+		t.score = self.score
 		for edg in self.edges:
 			s = edg.source
 			d = edg.destination

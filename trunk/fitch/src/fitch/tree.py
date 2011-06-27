@@ -10,6 +10,7 @@ class tree_node(node):
 		self.father = None
 		self.name = name
 		
+		
 	def has_sons(self):
 		if self.sons: return true
 	
@@ -31,6 +32,7 @@ class tree(graph):
 	
 	'''when adding edges: or you get a nodes from graph, or you are 
 		adding new nodes to graph'''
+		
 	def add_edge(self, source, destination):
 	
 		for nod in [source] + [destination]:

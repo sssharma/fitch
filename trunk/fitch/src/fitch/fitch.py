@@ -11,6 +11,7 @@ class fitch_tree(tree):
 		self.possible_r_trees = []
 		self.possible_trees = []
 		self.len = len(self.gtr.get_leaf().r)
+		self.score = 0
 		
 		for i in range(self.len):
 
@@ -73,6 +74,7 @@ class fitch_tree(tree):
 				if inter:#is not empty
 					node.R = inter
 				else:
+					self.score += 1
 					node.R = union
 				return node.R
 			
@@ -152,4 +154,5 @@ if __name__ == '__main__':
 
 	for list in fitch.possible_trees:
 		print list
+	
 				
