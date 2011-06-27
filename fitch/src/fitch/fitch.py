@@ -56,18 +56,21 @@ class fitch_tree(tree):
 			self.possible_trees = new_list
 	
 	def get_score(self):
+		if self.score: return self.score
 		score = 0
 		for itree in self.possible_r_trees:
 			for tree in itree:
 				score += tree.score
+				print tree.score
 				break
+		
 		return score
 	
 	def R(self, tr):
-		
+		tr.score = 0
 		def helper(node):
 			
-			if node.r: 
+			if node.R: 
 				return node.R
 			else: 
 				inter = set()
@@ -82,6 +85,8 @@ class fitch_tree(tree):
 				if inter:#is not empty
 					node.R = inter
 				else:
+					print node.name
+					print tr.score
 					self.score += 1
 					tr.score += 1
 					node.R = union
@@ -142,10 +147,10 @@ if __name__ == '__main__':
 	v1 = specie(name = 'v1')
 	v2 = specie(name = 'v2')
 	v3 = specie(name = 'v3')
-	v4 = specie('AA', name = 'v4')
-	v5 = specie('AC', name = 'v5')
-	v6 = specie('CG', name = 'v6')
-	v7 = specie('GC', name = 'v7')
+	v4 = specie('A', name = 'v4')
+	v5 = specie('C', name = 'v5')
+	v6 = specie('G', name = 'v6')
+	v7 = specie('T', name = 'v7')
 
 	tr.root = v1
 
@@ -159,9 +164,7 @@ if __name__ == '__main__':
 	tr.add_edge(v3, v7)
 
 	fitch = fitch_tree(tr)
-	
+	print 'fitch.score', fitch.score
+	print 'fitch.get_score()', fitch.get_score()
+    
 
-	for list in fitch.possible_trees:
-		print list
-	
-				

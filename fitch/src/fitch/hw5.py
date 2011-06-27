@@ -69,7 +69,8 @@ if __name__ == '__main__':
     
     non_fitch = {'v1':'CA', 'v2':'CA', 'v3':'CA', 'v4':'AA', 'v5':'GA', 'v6': 'CA', 'v7':'TA', }
     
-    print 'these are the fitch options, their score is', fitch.score
+    print 'fitch.score', fitch.score
+    print 'fitch.get_score()', fitch.get_score()
     for list in fitch.possible_trees:
         line = ''
         
