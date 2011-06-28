@@ -4,19 +4,21 @@ from tree import tree_edge as egde
 from tree import tree
 from copy import deepcopy
 
-class specie(node):
+class specie(tree_node):
 	
-	def __init__(self, r = None, name = None):
+	def __init__(self, r = None, name = None, theta = None):
 		
 		node.__init__(self)
 		self.R = set()
 		self.name = name
+		self.theta = theta
+		
 		if r: 
 			self.r =  r
 			self.R.add(r)
 		else:
 			self.r = None
-	
+
 	def copy(self):
 		s = specie(self.r, self.name)
 		s.R = self.R
