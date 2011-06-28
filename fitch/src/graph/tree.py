@@ -10,12 +10,6 @@ class tree_node(node):
 		self.father = None
 		self.name = name
 		
-	def has_sons(self):
-		if self.sons: return true
-	
-	def has_no_sons(self):
-		return not self.has_sons()
-
 class tree_edge(edge):
 	
 	def __init__(self, source, destination, data = None):
