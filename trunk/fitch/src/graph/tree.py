@@ -6,7 +6,7 @@ class tree_node(node):
 	def __init__(self, name = None):
 		
 		node.__init__(self) 
-		self.sons = set()
+		self.sons = []
 		self.father = None
 		self.name = name
 		
@@ -15,7 +15,7 @@ class tree_edge(edge):
 	def __init__(self, source, destination, data = None):
 		
 		edge.__init__(self, [source], [destination])
-		source.sons.add(destination)
+		source.sons.append(destination)
 		destination.father = source
 		self.source = source
 		self.destination = destination
