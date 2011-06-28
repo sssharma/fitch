@@ -1,6 +1,6 @@
-from genetic_tree import genetic_tree 
-from genetic_tree import specie
-from tree import tree
+from graph.genetic_tree import genetic_tree 
+from graph.genetic_tree import specie
+from graph.tree import tree
 
 
 class fitch_tree(tree):
